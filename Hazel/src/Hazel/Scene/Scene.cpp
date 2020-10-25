@@ -3,6 +3,11 @@
 
 #include "Components.h"
 #include "Hazel/Renderer/Renderer2D.h"
+#include "Hazel/Renderer/Renderer3D.h"
+
+#include "Hazel/Renderer/Renderer3D.h"
+#include "Hazel/Geom/GeomPrimitive.h"
+#include "Hazel/Geom/GeomUtils.h"
 
 #include <glm/glm.hpp>
 
@@ -81,6 +86,29 @@ namespace Hazel {
 			}
 
 			Renderer2D::EndScene();
+
+#if 1
+			static Ref<Mesh> mesh;
+
+			static bool once = false;
+			if (!once)
+			{
+				once = true;
+
+				mesh = CreateRef<Mesh>();
+
+				auto geom = GeomPrimitive::CreateBox(FVF_POS, 1, 1, 1, 0);
+				mesh->vertexArray = GeomUtils::GeomCreateVertexArray(geom);
+			}
+
+			Renderer3D::BeginScene(*mainCamera, cameraTransform);
+
+			// static float time = 0;
+			// time += ts;
+			// Mat4 trans = glm::rotate(time, Vec3(0, 0, 1));
+			Renderer3D::DrawMesh(mesh, glm::identity<Mat4>(), Vec4(0, 1, 0, 1));
+			Renderer3D::EndScene();
+#endif
 		}
 
 	}

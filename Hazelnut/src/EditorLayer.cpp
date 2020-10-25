@@ -1,9 +1,9 @@
 #include "EditorLayer.h"
 #include <imgui/imgui.h>
 
-#include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Hazel/Renderer/Renderer3D.h"
 #include "Hazel/Scene/SceneSerializer.h"
 
 #include "Hazel/Utils/PlatformUtils.h"
@@ -108,6 +108,7 @@ namespace Hazel {
 
 		// Render
 		Renderer2D::ResetStats();
+		Renderer3D::ResetStats();
 		m_Framebuffer->Bind();
 		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
@@ -266,6 +267,8 @@ namespace Hazel {
 				break;
 			}
 		}
+
+		return true;
 	}
 
 	void EditorLayer::NewScene()

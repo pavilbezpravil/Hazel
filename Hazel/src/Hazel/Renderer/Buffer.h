@@ -1,4 +1,5 @@
 #pragma once
+#include "Hazel/Geom/fvf.h"
 
 namespace Hazel {
 

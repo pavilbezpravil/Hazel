@@ -22,6 +22,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Hazel/Common/Types.h"
+#include "Hazel/Math/Types.h"
+
 #include "Hazel/Core/Base.h"
 
 #include "Hazel/Core/Log.h"
